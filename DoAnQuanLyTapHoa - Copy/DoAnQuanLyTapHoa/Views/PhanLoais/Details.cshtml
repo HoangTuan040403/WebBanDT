@@ -1,0 +1,27 @@
+﻿@model DoAnQuanLyTapHoa.Models.PhanLoai
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/MasterLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>PhanLoai</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Tenloai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tenloai)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MaLoai }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

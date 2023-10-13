@@ -76,10 +76,45 @@ namespace DoAnQuanLyTapHoa.Controllers
             try
             {
                 Cart cart = Session["Cart"] as Cart;
+                Order _order = new Order();
+                //_order.MaDH = 3; // chỗ này phải để tự nhảy mã đơn ;
+                _order.DateOr = DateTime.Now;
+                _order.SDT = (form["SDT"]);
+                _order.TenNgNhan = (form["TenNgNhan"]);
+                _order.DiaChiNhan = form["DCNhan"];
+                db.Orders.Add(_order);
+                foreach (var item in cart.Items)
+                {
+                    // lưu dòng sản phẩm vào chi tiết hóa đơn
+                    OrdersDetail _order_detail = new OrdersDetail();
+                    //_order_detail.MaCTDH = 2;  // chỗ này phải để tự nhảy mã đơn 
+                    _order_detail.SoLuong = item._shopping_product.SoLuong;
+                    _order_detail.ThanhTien = item._shopping_product.GiaSp;
+                    _order_detail.MaSP = item._shopping_product.MaSP;
+                    _order_detail.MaOr = _order.MaOr;                  
+                    db.OrdersDetails.Add(_order_detail);
+                }
+                db.SaveChanges();
+                cart.ClearCart();
+            return RedirectToAction("CheckOut_Success", "XemDonHang");
+        }
+            catch
+            {
+                return Content("Có sai sót! Xin kiểm tra lại thông tin"); ;
+            }
+
+}
+        public ActionResult DatHang(FormCollection form)
+        {
+            try
+            {
+                Cart cart = Session["Cart"] as Cart;
                 DonHang _order = new DonHang();
                 //_order.MaDH = 3; // chỗ này phải để tự nhảy mã đơn ;
                 _order.NgayDH = DateTime.Now;
-                _order.MaKH = int.Parse(form["NguoiBan"]);
+                _order.NguoiNhan = (form["NguoiNhan"]);
+                _order.DiaChiNhan = (form["DCNhan"]);
+                _order.Sodienthoainhan = (form["SDTNhan"]);
                 _order.Trigia = int.Parse(form["TongTien"]);
                 db.DonHangs.Add(_order);
                 foreach (var item in cart.Items)
@@ -90,8 +125,8 @@ namespace DoAnQuanLyTapHoa.Controllers
                     _order_detail.MaDH = _order.MaDH;
                     _order_detail.MaSP = item._shopping_product.MaSP;
                     _order_detail.Dongia = (int)item._shopping_product.GiaSp;
+                    _order_detail.Soluong = item._shopping_quantity;
                     _order_detail.ThanhTien = _order_detail.Dongia * _order_detail.Soluong;
-
                     db.ChiTietDHs.Add(_order_detail);
                 }
                 db.SaveChanges();
@@ -112,6 +147,12 @@ namespace DoAnQuanLyTapHoa.Controllers
         }
 
         // GET: XemDonHang
+
+
+        public ActionResult Order()
+        {
+            return View();
+        }
         public ActionResult Index()
         {
             return View();

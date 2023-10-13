@@ -1,0 +1,114 @@
+﻿@model IEnumerable<DoAnQuanLyTapHoa.Models.SanPham>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/MasterLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @*@Html.DisplayNameFor(model => model.TenSP)*@
+            <p>Tên sản phẩm</p>
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.GiaSp)*@
+            <p>Giá sản phẩm</p>
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.GiaGiam)*@
+            <p>Gía giảm</p>
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.SoLuong)*@
+            <p>Số lượng</p>
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.Hinh1)*@
+            <p>Hình 1</p>
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.Hinh2)*@
+            <p>Hình 2</p>
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.Hinh3)*@
+            <p>Hình 3</p>
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.Hinh4)*@
+            <p>Hình 4</p>
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.Hinh5)*@
+            <p>Hình 5</p>
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.Mota)*@
+            <p>Mô tả</p>
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.Thongso)*@
+            <p>Thông số</p>
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.PhanLoai.Tenloai)*@
+            <p>Tên loại</p>
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenSP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GiaSp)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GiaGiam)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SoLuong)
+        </td>
+        <td>
+            @*@Html.DisplayFor(modelItem => item.Hinh1)*@
+            <img src="~/Content/images/@item.Hinh1" width="60" />
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Hinh2)
+            
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Hinh3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Hinh4)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Hinh5)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Mota)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Thongso)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PhanLoai.Tenloai)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.MaSP }) |
+            @Html.ActionLink("Details", "Details", new { id=item.MaSP }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.MaSP })
+        </td>
+    </tr>
+}
+
+</table>

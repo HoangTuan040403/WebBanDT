@@ -39,8 +39,10 @@ namespace DoAnQuanLyTapHoa.Controllers
         }
 
         // GET: SanPhams/Create
+        [HttpGet]
         public ActionResult Create()
         {
+
             ViewBag.MaLoai = new SelectList(db.PhanLoais, "MaLoai", "TenLoai");
             return View();
         }
@@ -49,23 +51,23 @@ namespace DoAnQuanLyTapHoa.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MaSP,TenSP,HinhSP,MoTaSP,GiaSP,SoLuongSP,MaLoai,MaNSX")] SanPham sanPham,
-            HttpPostedFileBase HinhSP)
+        //[ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "MaSP,TenSP, GiaSp, GiaGiam, SoLuong, Hinh1, Hinh2, Hinh3, Hinh4, Hinh5, Mota, Thongso, MaLoai")] SanPham sanPham,
+            HttpPostedFileBase Hinh1)
         {
             if (ModelState.IsValid)
             {
 
-                if (HinhSP != null)
+                if (Hinh1 != null)
                 {
                     //Lấy tên file của hình được up lên
-                    var fileName = Path.GetFileName(HinhSP.FileName);
+                    var fileName = Path.GetFileName(Hinh1.FileName);
                     //Tạo đường dẫn tới file
-                    var path = Path.Combine(Server.MapPath("~/Images"), fileName);
+                    var path = Path.Combine(Server.MapPath("~Content/images"), fileName);
                     //Lưu tên
                     sanPham.Hinh1 = fileName;
                     //Save vào Images Folder
-                    HinhSP.SaveAs(path);
+                    Hinh1.SaveAs(path);
                 }
 
                 db.SanPhams.Add(sanPham);
@@ -75,6 +77,21 @@ namespace DoAnQuanLyTapHoa.Controllers
 
             ViewBag.MaLoai = new SelectList(db.PhanLoais, "MaLoai", "TenLoai", sanPham.MaLoai);
             return View(sanPham);
+
+            // Lấy tên file của hình được up lên
+            //var fileName = Path.GetFileName(Hinh1.FileName);
+            ////Tạo đường dẫn tới file
+            //var path = Path.Combine(Server.MapPath("~/images"), fileName);
+            //if (System.IO.File.Exists(path))
+            //{
+            //    ViewBag.ThongBao = "Hinh da ton tai";
+            //}
+            //else
+            //{
+            //    Hinh1.SaveAs(path);
+            //}
+            //ViewBag.MaLoai = new SelectList(db.PhanLoais.ToList(), "TenLoai", "MaLoai");
+            //return View();
         }
 
         // GET: SanPhams/Edit/5
@@ -98,7 +115,7 @@ namespace DoAnQuanLyTapHoa.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaSP,TenSP,HinhSP,MoTaSP,GiaSP,SoLuongSP,MaLoai,MaNSX")] SanPham sanPham)
+        public ActionResult Edit([Bind(Include = "MaSP,TenSP, GiaSp, GiaGiam, SoLuong, Hinh1, Hinh2, Hinh3, Hinh4, Hinh5, Mota, Thongso, MaLoai")] SanPham sanPham)
         {
             if (ModelState.IsValid)
             {
@@ -111,7 +128,7 @@ namespace DoAnQuanLyTapHoa.Controllers
         }
 
         // GET: SanPhams/Delete/5
-        public ActionResult Delete(string id)
+        public ActionResult Delete(int id)
         {
             if (id == null)
             {
@@ -128,7 +145,7 @@ namespace DoAnQuanLyTapHoa.Controllers
         // POST: SanPhams/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
+        public ActionResult DeleteConfirmed(int id)
         {
             SanPham sanPham = db.SanPhams.Find(id);
             db.SanPhams.Remove(sanPham);
@@ -144,14 +161,14 @@ namespace DoAnQuanLyTapHoa.Controllers
             var products = db.SanPhams.Include(p => p.PhanLoai);
 
             //Tìm kiếm chuỗi truy vấn theo tên sản phẩm, nếu chuỗi truy vấn SearchString khác rỗng, null
-            if(!String.IsNullOrEmpty(searchString))
+            if (!String.IsNullOrEmpty(searchString))
             {
                 products = products.Where(s => s.TenSP.Contains(searchString));
             }
             else
             {
                 Console.WriteLine("Không tìm thấy sản phẩm nào");
-            }    
+            }
             return View(products.ToList());
 
         }

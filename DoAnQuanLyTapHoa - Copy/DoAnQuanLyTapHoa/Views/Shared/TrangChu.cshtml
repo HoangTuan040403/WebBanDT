@@ -29,8 +29,12 @@
     <nav>
         <div class="container">
             <ul>
-                <li><a href="#"><img src="~/Content/images/logo.png" style="width:20px", height="20px"  /></a></li>
-                <li><input type="text" placeholder="Bạn cần tìm gì?" name="SearchString" required><i class="fas fa-search"></i></li>
+                <li><a href="#"><img src="~/Content/images/logo.png" style="width:20px" , height="20px" /></a></li>
+                @using (Html.BeginForm("Productlist", "SanPhams", FormMethod.Get))
+                {
+                    <li><input type="text" placeholder="Bạn cần tìm gì?" name="SearchString" required><i class="fas fa-search"></i></li>
+                }
+
                 <li>
                     <a data-bs-toggle="dropdown" href="#">Điện thoại</a>
                     <ul class="dropdown-menu">

@@ -26,10 +26,12 @@ namespace DoAnQuanLyTapHoa.Models
         }
     
         public virtual DbSet<DonHang> DonHangs { get; set; }
-        public virtual DbSet<KhachHang> KhachHangs { get; set; }
         public virtual DbSet<Mau> Maus { get; set; }
+        public virtual DbSet<Order> Orders { get; set; }
+        public virtual DbSet<OrdersDetail> OrdersDetails { get; set; }
         public virtual DbSet<PhanLoai> PhanLoais { get; set; }
         public virtual DbSet<SanPham> SanPhams { get; set; }
+        public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Vourcher> Vourchers { get; set; }
         public virtual DbSet<YeuThich> YeuThiches { get; set; }
         public virtual DbSet<ChiTietDH> ChiTietDHs { get; set; }

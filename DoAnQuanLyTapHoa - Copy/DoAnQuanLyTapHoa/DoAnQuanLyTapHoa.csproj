@@ -133,6 +133,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ChiTietDonHangsController.cs" />
+    <Compile Include="Controllers\DatHangController.cs" />
     <Compile Include="Controllers\DonHangsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoaiSPsController.cs" />
@@ -140,6 +141,7 @@
     <Compile Include="Controllers\NhaCungCapsController.cs" />
     <Compile Include="Controllers\NhapHangsController.cs" />
     <Compile Include="Controllers\PhanLoaisController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\SanPhamsController.cs" />
     <Compile Include="Controllers\TrangChuController.cs" />
     <Compile Include="Controllers\UserIDsController.cs" />
@@ -156,10 +158,13 @@
     <Compile Include="Models\DonHang.cs">
       <DependentUpon>QLBANDTEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\KhachHang.cs">
+    <Compile Include="Models\Mau.cs">
       <DependentUpon>QLBANDTEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Mau.cs">
+    <Compile Include="Models\Order.cs">
+      <DependentUpon>QLBANDTEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OrdersDetail.cs">
       <DependentUpon>QLBANDTEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PhanLoai.cs">
@@ -181,6 +186,9 @@
       <DependentUpon>QLBANDTEntities.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\SanPham.cs">
+      <DependentUpon>QLBANDTEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\User.cs">
       <DependentUpon>QLBANDTEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Vourcher.cs">
@@ -211,13 +219,47 @@
     <Content Include="Content\dn.css" />
     <Content Include="Content\GDcss.css" />
     <Content Include="Content\GiaodienKH.css" />
+    <Content Include="Content\images\add.png" />
     <Content Include="Content\images\banner1.png" />
     <Content Include="Content\images\banner2.png" />
     <Content Include="Content\images\banner3.png" />
     <Content Include="Content\images\banner4.png" />
     <Content Include="Content\images\header banner.png" />
+    <Content Include="Content\images\ip11_12_timnhat.jpeg" />
+    <Content Include="Content\images\ip11_9_vang.jpg" />
+    <Content Include="Content\images\ip14plus_25_xanhden.jpg" />
+    <Content Include="Content\images\ip14pro_2419_vang.jpg" />
+    <Content Include="Content\images\ip15_23_den.jpg" />
     <Content Include="Content\images\iphone-14-pro-max-den.png" />
+    <Content Include="Content\images\ipx_7_trang.jpg" />
     <Content Include="Content\images\logo.png" />
+    <Content Include="Content\images\opa16_3tr2_bac.png" />
+    <Content Include="Content\images\opa16_3tr2_den.png" />
+    <Content Include="Content\images\opa17k_2tr8_vang.png" />
+    <Content Include="Content\images\opa74_7_den.png" />
+    <Content Include="Content\images\opa74_7_xanh.png" />
+    <Content Include="Content\images\opa78_6_xanh.png" />
+    <Content Include="Content\images\opa95_5tr_bac.png" />
+    <Content Include="Content\images\opa95_5tr_den.png" />
+    <Content Include="Content\images\opfindn2flip_20_tim.png" />
+    <Content Include="Content\images\oppo-renon10-pro.png" />
+    <Content Include="Content\images\opreno10_105_xanh.png" />
+    <Content Include="Content\images\opreno8_8tr5_den.png" />
+    <Content Include="Content\images\opreno8_8tr5_vangdong.png" />
+    <Content Include="Content\images\ssa14_4_den.png" />
+    <Content Include="Content\images\ssgalaxynote10_5_den.png" />
+    <Content Include="Content\images\ssgalaxynote10_5_xanh.png" />
+    <Content Include="Content\images\ssgalaxy_17_den.png" />
+    <Content Include="Content\images\sss20_5tr5_hong.png" />
+    <Content Include="Content\images\sss20_5tr5_trang.png" />
+    <Content Include="Content\images\sss20_5tr5_xanhduong.png" />
+    <Content Include="Content\images\sss22ultra_15_den.png" />
+    <Content Include="Content\images\sss22ultra_15_trang.png" />
+    <Content Include="Content\images\sss22ultra_175_hongtim.png" />
+    <Content Include="Content\images\sszflip5_22_den.png" />
+    <Content Include="Content\images\sszflip5_22_tim.png" />
+    <Content Include="Content\images\sszflip5_22_vangnhat.png" />
+    <Content Include="Content\images\sszflip5_22_xanh.png" />
     <Content Include="Content\images\sumsungs23.png" />
     <Content Include="Content\images\vidBanHang.mp4" />
     <Content Include="Content\masterlayout.css" />
@@ -271,6 +313,11 @@
     <Content Include="Models\QLBANDTEntities.edmx.diagram">
       <DependentUpon>QLBANDTEntities.edmx</DependentUpon>
     </Content>
+    <Content Include="Content\images\ip12_10390_xanh.webp" />
+    <Content Include="Content\images\ip12_12_xanhdam.webp" />
+    <Content Include="Content\images\ip12_16890_tim.webp" />
+    <Content Include="Content\images\ip15promax_33_Xam.webp" />
+    <Content Include="Content\images\ipse_9_trang.webp" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -349,6 +396,12 @@
     <Content Include="Views\PhanLoais\Details.cshtml" />
     <Content Include="Views\PhanLoais\Edit.cshtml" />
     <Content Include="Views\PhanLoais\Index.cshtml" />
+    <Content Include="Views\XemDonHang\Order.cshtml" />
+    <Content Include="Views\Product\Create.cshtml" />
+    <Content Include="Views\Product\Delete.cshtml" />
+    <Content Include="Views\Product\Details.cshtml" />
+    <Content Include="Views\Product\Edit.cshtml" />
+    <Content Include="Views\Product\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

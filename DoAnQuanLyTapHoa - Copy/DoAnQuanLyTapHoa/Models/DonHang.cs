@@ -22,16 +22,16 @@ namespace DoAnQuanLyTapHoa.Models
     
         public int MaDH { get; set; }
         public System.DateTime NgayDH { get; set; }
-        public int NguoiNhan { get; set; }
+        public string NguoiNhan { get; set; }
         public string DiaChiNhan { get; set; }
         public string HTthanhtoan { get; set; }
-        public System.DateTime NgayGH { get; set; }
-        public int Trigia { get; set; }
-        public int Sodienthoainhan { get; set; }
-        public int MaKH { get; set; }
+        public Nullable<System.DateTime> NgayGH { get; set; }
+        public Nullable<int> Trigia { get; set; }
+        public string Sodienthoainhan { get; set; }
+        public Nullable<int> MaUser { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietDH> ChiTietDHs { get; set; }
-        public virtual KhachHang KhachHang { get; set; }
+        public virtual User User { get; set; }
     }
 }

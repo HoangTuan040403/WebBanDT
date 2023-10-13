@@ -16,9 +16,9 @@ namespace DoAnQuanLyTapHoa.Models
     {
         public int MaYT { get; set; }
         public int MaSP { get; set; }
-        public int MaKH { get; set; }
+        public int MaUser { get; set; }
     
-        public virtual KhachHang KhachHang { get; set; }
         public virtual SanPham SanPham { get; set; }
+        public virtual User User { get; set; }
     }
 }

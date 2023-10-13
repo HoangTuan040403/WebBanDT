@@ -12,23 +12,7 @@
           <ScalarProperty Name="NgayGH" ColumnName="NgayGH" />
           <ScalarProperty Name="Trigia" ColumnName="Trigia" />
           <ScalarProperty Name="Sodienthoainhan" ColumnName="Sodienthoainhan" />
-          <ScalarProperty Name="MaKH" ColumnName="MaKH" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="KhachHangs">
-      <EntityTypeMapping TypeName="QLBANDTModel.KhachHang">
-        <MappingFragment StoreEntitySet="KhachHang">
-          <ScalarProperty Name="MaKH" ColumnName="MaKH" />
-          <ScalarProperty Name="TenKH" ColumnName="TenKH" />
-          <ScalarProperty Name="sdt" ColumnName="sdt" />
-          <ScalarProperty Name="email" ColumnName="email" />
-          <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
-          <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
-          <ScalarProperty Name="TK" ColumnName="TK" />
-          <ScalarProperty Name="Pass" ColumnName="Pass" />
-          <ScalarProperty Name="Roleuser" ColumnName="Roleuser" />
-          <ScalarProperty Name="Hinh" ColumnName="Hinh" />
+          <ScalarProperty Name="MaUser" ColumnName="MaUser" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -37,6 +21,28 @@
         <MappingFragment StoreEntitySet="Mau">
           <ScalarProperty Name="Tenmau" ColumnName="Tenmau" />
           <ScalarProperty Name="Mamau" ColumnName="Mamau" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orders">
+      <EntityTypeMapping TypeName="QLBANDTModel.Order">
+        <MappingFragment StoreEntitySet="Orders">
+          <ScalarProperty Name="MaOr" ColumnName="MaOr" />
+          <ScalarProperty Name="DateOr" ColumnName="DateOr" />
+          <ScalarProperty Name="SDT" ColumnName="SDT" />
+          <ScalarProperty Name="TenNgNhan" ColumnName="TenNgNhan" />
+          <ScalarProperty Name="DiaChiNhan" ColumnName="DiaChiNhan" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrdersDetails">
+      <EntityTypeMapping TypeName="QLBANDTModel.OrdersDetail">
+        <MappingFragment StoreEntitySet="OrdersDetail">
+          <ScalarProperty Name="MaOrD" ColumnName="MaOrD" />
+          <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+          <ScalarProperty Name="ThanhTien" ColumnName="ThanhTien" />
+          <ScalarProperty Name="MaSP" ColumnName="MaSP" />
+          <ScalarProperty Name="MaOr" ColumnName="MaOr" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -60,9 +66,26 @@
           <ScalarProperty Name="Hinh2" ColumnName="Hinh2" />
           <ScalarProperty Name="Hinh3" ColumnName="Hinh3" />
           <ScalarProperty Name="Hinh4" ColumnName="Hinh4" />
+          <ScalarProperty Name="Hinh5" ColumnName="Hinh5" />
           <ScalarProperty Name="Mota" ColumnName="Mota" />
           <ScalarProperty Name="Thongso" ColumnName="Thongso" />
           <ScalarProperty Name="MaLoai" ColumnName="MaLoai" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="QLBANDTModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="MaUser" ColumnName="MaUser" />
+          <ScalarProperty Name="TenUser" ColumnName="TenUser" />
+          <ScalarProperty Name="sdt" ColumnName="sdt" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+          <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
+          <ScalarProperty Name="TK" ColumnName="TK" />
+          <ScalarProperty Name="Pass" ColumnName="Pass" />
+          <ScalarProperty Name="Roleuser" ColumnName="Roleuser" />
+          <ScalarProperty Name="Hinh" ColumnName="Hinh" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -81,7 +104,7 @@
         <MappingFragment StoreEntitySet="YeuThich">
           <ScalarProperty Name="MaYT" ColumnName="MaYT" />
           <ScalarProperty Name="MaSP" ColumnName="MaSP" />
-          <ScalarProperty Name="MaKH" ColumnName="MaKH" />
+          <ScalarProperty Name="MaUser" ColumnName="MaUser" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -21,6 +21,7 @@
     @*css*@
     @*<link href="@Url.Content("~/Content/GiaodienKH.css")" rel="stylesheet" type="text/css" />*@
    <link href="~/Content/GDcss.css" rel="stylesheet" />
+@*<link href="~/Content/TrangChu.css" rel="stylesheet" />*@
 
     <!-- gg font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -37,18 +38,25 @@
     <nav>
         <div class="container">
             <ul>
-                <li><a href="#"><img src="~/Content/images/logo.png" style="width:20px" ," heigh: 20px" /></a></li>
-                <li><input type="text" placeholder="Bạn cần tìm gì?" name="SearchString" required><i class="fas fa-search"></i></li>
+                <li><a href="#"><img src="~/Content/images/logo.png" style="width:20px" ," heigh: 20px" /></a></li>                           
+                <li>
+                    @using (Html.BeginForm("Productlist", "SanPhams", FormMethod.Get))
+                    {
+                        <input type="text" placeholder="Bạn cần tìm gì?" name="SearchString" required><i class="fas fa-search"></i>
+                    }
+                </li>
+                
+
                 <li>
                     <a data-bs-toggle="dropdown" href="#">Điện thoại</a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">IPHONE</a></li>
+                        <li><a class="dropdown-item" href="/XemDonHang/ShowToCart">IPHONE</a></li>
                         <li><a class="dropdown-item" href="#">SAMSUNG</a></li>
                         <li><a class="dropdown-item" href="#">OPPO</a></li>
                     </ul>
                 </li>
                 <li><a href="#"></a><button><i class="tk and cart"></i>Tài khoản và đơn hàng</button></li>
-                <li><a href="#"></a><button><i class="tk and cart"></i>Giỏ hàng</button></li>
+                <li><a href="/XemDonHang//ShowToCart"</a><button><i class="tk and cart"></i>Giỏ hàng</button></li>
             </ul>
         </div>
     </nav>
@@ -103,7 +111,7 @@
                 </div>
             </div>
         </div>
-        <p class="all-right-reserved">&copy;2021 Tiệm tạp hóa | All Rights Reserved</p>
+        <p class="all-right-reserved">&copy;20223 LYT CellPhone | All Rights Reserved</p>
     </footer>
 </body>
 </html>

@@ -1,0 +1,39 @@
+﻿@model DoAnQuanLyTapHoa.Models.Cart
+@{
+    ViewBag.Title = "Order";
+    Layout = "~/Views/Shared/GiaoDienKHLayout.cshtml";
+}
+
+<tfoot class="thanhtoan">
+    <tr>
+        <td colspan="6">
+            <br />
+            @*<h4 class="headerTextOfQuanLy" style="margin: 0px;">THANH TOÁN</h4>*@
+            <div class="submit-thanhtoan">
+                @using (Html.BeginForm("DatHang", "XemDonHang", FormMethod.Post))
+                {
+                    <table style="border-collapse:separate; border-spacing:5px;">
+                        <tr>
+                            <td colspan="2">
+                                Nhập mã Nhân viên:
+                            </td>
+                            <td>
+                                <input type="hidden" name="TongTien" value="@Model.Total_money()" />
+                            </td>
+                            <td>
+                                <input style="width: 200px" type="number" name="NguoiBan" value="@Session["MaNguoiBan"]" required" />
+                            </td>
+                            <td colspan="2">
+                                <input style="width: 200px; background-color: #424242;" type="submit" value="Thanh toán" class="btn btn-dark" />
+
+                            </td>
+                        </tr>
+                    </table>
+                }
+            </div>
+
+        </td>
+
+    </tr>
+</tfoot>
+

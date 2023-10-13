@@ -4,34 +4,17 @@
     <Key>
       <PropertyRef Name="MaDH" />
     </Key>
-    <Property Name="MaDH" Type="Int32" Nullable="false" />
+    <Property Name="MaDH" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="NgayDH" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="NguoiNhan" Type="Int32" Nullable="false" />
+    <Property Name="NguoiNhan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="DiaChiNhan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="HTthanhtoan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="NgayGH" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="Trigia" Type="Int32" Nullable="false" />
-    <Property Name="Sodienthoainhan" Type="Int32" Nullable="false" />
-    <Property Name="MaKH" Type="Int32" Nullable="false" />
+    <Property Name="HTthanhtoan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NgayGH" Type="DateTime" Precision="0" />
+    <Property Name="Trigia" Type="Int32" />
+    <Property Name="Sodienthoainhan" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MaUser" Type="Int32" />
     <NavigationProperty Name="ChiTietDHs" Relationship="Self.FK__ChiTietDH__MaDH__5441852A" FromRole="DonHang" ToRole="ChiTietDH" />
-    <NavigationProperty Name="KhachHang" Relationship="Self.FK__DonHang__MaKH__4BAC3F29" FromRole="DonHang" ToRole="KhachHang" />
-  </EntityType>
-  <EntityType Name="KhachHang">
-    <Key>
-      <PropertyRef Name="MaKH" />
-    </Key>
-    <Property Name="MaKH" Type="Int32" Nullable="false" />
-    <Property Name="TenKH" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="sdt" Type="Int32" Nullable="false" />
-    <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="DiaChi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="NgaySinh" Type="DateTime" Precision="0" />
-    <Property Name="TK" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Pass" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Roleuser" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-    <Property Name="Hinh" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="DonHangs" Relationship="Self.FK__DonHang__MaKH__4BAC3F29" FromRole="KhachHang" ToRole="DonHang" />
-    <NavigationProperty Name="YeuThiches" Relationship="Self.FK__YeuThich__MaKH__59063A47" FromRole="KhachHang" ToRole="YeuThich" />
+    <NavigationProperty Name="User" Relationship="Self.FK__DonHang__MaUser__4BAC3F29" FromRole="DonHang" ToRole="Users" />
   </EntityType>
   <EntityType Name="Mau">
     <Key>
@@ -40,6 +23,29 @@
     <Property Name="Tenmau" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Mamau" Type="Int32" Nullable="false" />
     <NavigationProperty Name="SanPhams" Relationship="Self.Mau_sp" FromRole="Mau" ToRole="SanPham" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="MaOr" />
+    </Key>
+    <Property Name="MaOr" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DateOr" Type="DateTime" Precision="0" />
+    <Property Name="SDT" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+    <Property Name="TenNgNhan" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="DiaChiNhan" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="OrdersDetails" Relationship="Self.FK__OrdersDeta__MaOr__656C112C" FromRole="Orders" ToRole="OrdersDetail" />
+  </EntityType>
+  <EntityType Name="OrdersDetail">
+    <Key>
+      <PropertyRef Name="MaOrD" />
+    </Key>
+    <Property Name="MaOrD" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SoLuong" Type="Int32" />
+    <Property Name="ThanhTien" Type="Int32" />
+    <Property Name="MaSP" Type="Int32" />
+    <Property Name="MaOr" Type="Int32" />
+    <NavigationProperty Name="Order" Relationship="Self.FK__OrdersDeta__MaOr__656C112C" FromRole="OrdersDetail" ToRole="Orders" />
+    <NavigationProperty Name="SanPham" Relationship="Self.FK__OrdersDeta__MaSP__6477ECF3" FromRole="OrdersDetail" ToRole="SanPham" />
   </EntityType>
   <EntityType Name="PhanLoai">
     <Key>
@@ -62,14 +68,33 @@
     <Property Name="Hinh2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Hinh3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Hinh4" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Hinh5" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Mota" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Thongso" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="MaLoai" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="OrdersDetails" Relationship="Self.FK__OrdersDeta__MaSP__6477ECF3" FromRole="SanPham" ToRole="OrdersDetail" />
     <NavigationProperty Name="PhanLoai" Relationship="Self.FK__SanPham__MaLoai__52593CB8" FromRole="SanPham" ToRole="PhanLoai" />
     <NavigationProperty Name="ChiTietDHs" Relationship="Self.FK__ChiTietDH__MaSP__5535A963" FromRole="SanPham" ToRole="ChiTietDH" />
     <NavigationProperty Name="Vourchers" Relationship="Self.FK__Vourcher__MaSP__5BE2A6F2" FromRole="SanPham" ToRole="Vourcher" />
     <NavigationProperty Name="YeuThiches" Relationship="Self.FK__YeuThich__MaSP__5812160E" FromRole="SanPham" ToRole="YeuThich" />
     <NavigationProperty Name="Maus" Relationship="Self.Mau_sp" FromRole="SanPham" ToRole="Mau" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="MaUser" />
+    </Key>
+    <Property Name="MaUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenUser" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="sdt" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="DiaChi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="NgaySinh" Type="DateTime" Precision="0" />
+    <Property Name="TK" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Pass" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Roleuser" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Hinh" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="DonHangs" Relationship="Self.FK__DonHang__MaUser__4BAC3F29" FromRole="Users" ToRole="DonHang" />
+    <NavigationProperty Name="YeuThiches" Relationship="Self.FK__YeuThich__MaUser__59063A47" FromRole="Users" ToRole="YeuThich" />
   </EntityType>
   <EntityType Name="Vourcher">
     <Key>
@@ -87,9 +112,9 @@
     </Key>
     <Property Name="MaYT" Type="Int32" Nullable="false" />
     <Property Name="MaSP" Type="Int32" Nullable="false" />
-    <Property Name="MaKH" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="KhachHang" Relationship="Self.FK__YeuThich__MaKH__59063A47" FromRole="YeuThich" ToRole="KhachHang" />
+    <Property Name="MaUser" Type="Int32" Nullable="false" />
     <NavigationProperty Name="SanPham" Relationship="Self.FK__YeuThich__MaSP__5812160E" FromRole="YeuThich" ToRole="SanPham" />
+    <NavigationProperty Name="User" Relationship="Self.FK__YeuThich__MaUser__59063A47" FromRole="YeuThich" ToRole="Users" />
   </EntityType>
   <EntityType Name="ChiTietDH">
     <Key>
@@ -119,27 +144,39 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__DonHang__MaKH__4BAC3F29">
-    <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="1" />
+  <Association Name="FK__DonHang__MaUser__4BAC3F29">
+    <End Role="Users" Type="Self.User" Multiplicity="0..1" />
     <End Role="DonHang" Type="Self.DonHang" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="KhachHang">
-        <PropertyRef Name="MaKH" />
+      <Principal Role="Users">
+        <PropertyRef Name="MaUser" />
       </Principal>
       <Dependent Role="DonHang">
-        <PropertyRef Name="MaKH" />
+        <PropertyRef Name="MaUser" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__YeuThich__MaKH__59063A47">
-    <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="1" />
-    <End Role="YeuThich" Type="Self.YeuThich" Multiplicity="*" />
+  <Association Name="FK__OrdersDeta__MaOr__656C112C">
+    <End Role="Orders" Type="Self.Order" Multiplicity="0..1" />
+    <End Role="OrdersDetail" Type="Self.OrdersDetail" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="KhachHang">
-        <PropertyRef Name="MaKH" />
+      <Principal Role="Orders">
+        <PropertyRef Name="MaOr" />
       </Principal>
-      <Dependent Role="YeuThich">
-        <PropertyRef Name="MaKH" />
+      <Dependent Role="OrdersDetail">
+        <PropertyRef Name="MaOr" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrdersDeta__MaSP__6477ECF3">
+    <End Role="SanPham" Type="Self.SanPham" Multiplicity="0..1" />
+    <End Role="OrdersDetail" Type="Self.OrdersDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SanPham">
+        <PropertyRef Name="MaSP" />
+      </Principal>
+      <Dependent Role="OrdersDetail">
+        <PropertyRef Name="MaSP" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -191,16 +228,30 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK__YeuThich__MaUser__59063A47">
+    <End Role="Users" Type="Self.User" Multiplicity="1" />
+    <End Role="YeuThich" Type="Self.YeuThich" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="MaUser" />
+      </Principal>
+      <Dependent Role="YeuThich">
+        <PropertyRef Name="MaUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="Mau_sp">
     <End Role="Mau" Type="Self.Mau" Multiplicity="*" />
     <End Role="SanPham" Type="Self.SanPham" Multiplicity="*" />
   </Association>
   <EntityContainer Name="QLBANDTEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="DonHangs" EntityType="Self.DonHang" />
-    <EntitySet Name="KhachHangs" EntityType="Self.KhachHang" />
     <EntitySet Name="Maus" EntityType="Self.Mau" />
+    <EntitySet Name="Orders" EntityType="Self.Order" />
+    <EntitySet Name="OrdersDetails" EntityType="Self.OrdersDetail" />
     <EntitySet Name="PhanLoais" EntityType="Self.PhanLoai" />
     <EntitySet Name="SanPhams" EntityType="Self.SanPham" />
+    <EntitySet Name="Users" EntityType="Self.User" />
     <EntitySet Name="Vourchers" EntityType="Self.Vourcher" />
     <EntitySet Name="YeuThiches" EntityType="Self.YeuThich" />
     <EntitySet Name="ChiTietDHs" EntityType="Self.ChiTietDH" />
@@ -208,13 +259,17 @@
       <End Role="DonHang" EntitySet="DonHangs" />
       <End Role="ChiTietDH" EntitySet="ChiTietDHs" />
     </AssociationSet>
-    <AssociationSet Name="FK__DonHang__MaKH__4BAC3F29" Association="Self.FK__DonHang__MaKH__4BAC3F29">
-      <End Role="KhachHang" EntitySet="KhachHangs" />
+    <AssociationSet Name="FK__DonHang__MaUser__4BAC3F29" Association="Self.FK__DonHang__MaUser__4BAC3F29">
+      <End Role="Users" EntitySet="Users" />
       <End Role="DonHang" EntitySet="DonHangs" />
     </AssociationSet>
-    <AssociationSet Name="FK__YeuThich__MaKH__59063A47" Association="Self.FK__YeuThich__MaKH__59063A47">
-      <End Role="KhachHang" EntitySet="KhachHangs" />
-      <End Role="YeuThich" EntitySet="YeuThiches" />
+    <AssociationSet Name="FK__OrdersDeta__MaOr__656C112C" Association="Self.FK__OrdersDeta__MaOr__656C112C">
+      <End Role="Orders" EntitySet="Orders" />
+      <End Role="OrdersDetail" EntitySet="OrdersDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrdersDeta__MaSP__6477ECF3" Association="Self.FK__OrdersDeta__MaSP__6477ECF3">
+      <End Role="SanPham" EntitySet="SanPhams" />
+      <End Role="OrdersDetail" EntitySet="OrdersDetails" />
     </AssociationSet>
     <AssociationSet Name="FK__SanPham__MaLoai__52593CB8" Association="Self.FK__SanPham__MaLoai__52593CB8">
       <End Role="PhanLoai" EntitySet="PhanLoais" />
@@ -230,6 +285,10 @@
     </AssociationSet>
     <AssociationSet Name="FK__YeuThich__MaSP__5812160E" Association="Self.FK__YeuThich__MaSP__5812160E">
       <End Role="SanPham" EntitySet="SanPhams" />
+      <End Role="YeuThich" EntitySet="YeuThiches" />
+    </AssociationSet>
+    <AssociationSet Name="FK__YeuThich__MaUser__59063A47" Association="Self.FK__YeuThich__MaUser__59063A47">
+      <End Role="Users" EntitySet="Users" />
       <End Role="YeuThich" EntitySet="YeuThiches" />
     </AssociationSet>
     <AssociationSet Name="Mau_sp" Association="Self.Mau_sp">

@@ -139,17 +139,32 @@
                             {
                                 <table style="border-collapse:separate; border-spacing:5px;">
                                     <tr>
-                                        <td colspan="2">
-                                            Nhập mã Nhân viên:
+                                        <td>Số điện thoại:</td>
+                                        <td><input style="width: 200px" type="text" name="SDTNhan" required" value="@Session["SDT"]"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Tên người nhận:
                                         </td>
                                         <td>
-                                            <input type="hidden" name="TongTien" value="@Model.Total_money()" />
+                                            <input style="width: 200px" type="text" name="NguoiNhan" required" value="@Session["TenNgNhan"]" />
                                         </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Địa chỉ nhận:</td>
+                                        <td><input style="width: 200px" type="text" name="DCNhan" required" value="@Session["DCNhan"]"/></td>
+                                    </tr>
+
+                                    @*<tr>
+            <td>
+                <input type="hidden" name="TongTien" value="@Model.Total_money()" />
+            </td>
+        </tr>*@
+                                    <tr>
                                         <td>
-                                            <input style="width: 200px" type="number" name="NguoiBan" value="@Session["MaNguoiBan"]" required" />
-                                        </td>
-                                        <td colspan="2">
                                             <input style="width: 200px; background-color: #424242;" type="submit" value="Thanh toán" class="btn btn-dark" />
+
+                                            @*<a href="/XemDonHang/Order/" class="btn-default">Thêm vào giỏ hàng</a>*@
                                         </td>
                                     </tr>
                                 </table>

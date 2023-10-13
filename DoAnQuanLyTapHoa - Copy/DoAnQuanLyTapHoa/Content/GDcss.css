@@ -118,7 +118,7 @@ a {
 
 header {
     text-align: center;
-    max-width: 1200px;
+   
 }
 /*-----------------nav--------------------*/
 .container {
@@ -127,9 +127,9 @@ header {
 }
 
 nav {
-    background-color: yellow;
-    height: 40px;
-    padding: 5px;
+    background-color: #00aeff;
+    height: 50px;
+    padding: 8px;
 }
 
     nav ul {
@@ -137,49 +137,47 @@ nav {
         justify-content: space-between;
         align-items: center;
     }
-        /*------------------CSS SEARCH---------------------*/
-        nav ul li, a {
-            color: black;
-            font-size: 15px;
-        }
-
-            nav ul li:nth-child(2) {
-                position: relative;
-            }
-
-                nav ul li:nth-child(2) input {
-                    height: 30px;
-                    width: 100%;
-                    border-radius: 5px;
-                    border: none;
-                    outline: none;
-                }
-
-                nav ul li:nth-child(2) i {
-                    position: absolute;
-                    font-size: 15px;
-                    right: 12px;
-                    line-height: 30px;
-                    cursor: pointer;
-                }
+  /*------------------CSS SEARCH---------------------*/
+nav ul li, a {
+    color: black;
+    font-size:17px;
+    
+}
+nav ul li:nth-child(2){
+    position:relative;
+}
+nav ul li:nth-child(2) input{
+    height:30px;
+    width:100%;
+    border-radius:5px;
+    border:none;
+    outline: none;
+}
+nav ul li:nth-child(2) i{
+    position:absolute;
+    font-size:15px;
+    right:12px;
+    line-height:30px;
+    cursor: pointer;
+}
             /*-----------------------CSS BUTTON-------------------------*/
-            nav ul li:nth-child(4) button {
-                height: 30px;
-                padding: 0 8px;
-                cursor: pointer;
-                background-color: #ffe600;
-                border-radius: 5px;
-                border: 1px solid #ffe600;
-            }
+    nav ul li:nth-child(4) button {
+        height: 30px;
+        padding: 0 8px;
+        cursor: pointer;
+        background-color: #57c1f2;
+        border-radius: 5px;
+        border: 1px solid #57c1f2;
+    }
 
-            nav ul li:nth-child(5) button {
-                height: 30px;
-                padding: 0 8px;
-                cursor: pointer;
-                background-color: #ffe600;
-                border-radius: 5px;
-                border: 1px solid #ffe600;
-            }
+    nav ul li:nth-child(5) button {
+        height: 30px;
+        padding: 0 8px;
+        cursor: pointer;
+        background-color: #57c1f2;
+        border-radius: 5px;
+        border: 1px solid #57c1f2;
+    }
 
 
 
